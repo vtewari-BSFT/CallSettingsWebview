@@ -21,11 +21,10 @@
 
  .mat-dialog-actions,
  mat-dialog-actions {
-   margin-left: 75px;
-    /* background-color: blue;  */
-   padding-top: -10px;
-   padding-bottom: -10px;
-   margin-top: 20px;
+  margin-left: 75px;
+  padding-top: -10px;
+  padding-bottom: -10px;
+  margin-top: 20px;
  }
 /*
  .scroll-container {
@@ -75,8 +74,7 @@
 }
 
  .dialogContainer {
-  background-color: white;
-  min-height: 170px;
+  height: 190px;
   margin: '0 auto';
   padding: 22px 0px 0px 0px;
   border-radius: 8px;
@@ -104,7 +102,7 @@
 
     margin: 11px 10px 0px 0px !important; */
    align-self: bottom;
-   min-height: 95px;
+   height: 95px;
    width: 270px;
 
  }
@@ -127,7 +125,6 @@
    background-color: #2DBD9B !important;
    /*PrimaryButton */
  }
-
 
  /*Size of the mat-select dropDown box*/
  .mat-select-panel {
@@ -171,6 +168,7 @@
 
  .mat-list-item-content {
    font-family: Roboto !important;
+   outline: none !important;
  }
 
  .restrictiveButtonStyle {
@@ -298,10 +296,12 @@
  }
 
  .mat-checkbox-inner-container {
-   height: 12px !important;
+   height: 15px !important;
    /*restrictiveLabelStyle*/
-   width: 12px !important;
+   width: 15px !important;
    /*restrictiveLabelStyle*/
+   margin: auto 8px 14px 0px !important;
+   outline: none !important;
  }
 
  .mat-checkbox-label {
@@ -324,16 +324,19 @@
  /*mat-form-field-underline start*/
  .mat-focused .mat-form-field-ripple {
   background-color: #2DBD9B !important;
+  outline: none !important;
 }
 
 .inputInvokedColor
 .mat-form-field-ripple {
   background-color: #2DBD9B !important;
+  outline: none !important;
 }
 
 .callsettingErrorInput
 .mat-form-field-ripple {
   background-color: #FF3347 !important;
+  outline: none !important;
 }
  /*mat-form-field-underline end*/
 
@@ -369,6 +372,13 @@
    min-height: 30px;
  }
 
+
+.my-panel .mat-dialog-container {
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 5px;
+}
+
  /* set settings button */
  .SetSettingsButtonClass {
   /* background-color: #A9A9A9; */
@@ -390,7 +400,7 @@
   background-color: white;
 }
 
-#popUpCheckboxAlert,
+/* #popUpCheckboxAlert,
  .popUpCheckboxAlert {
    margin-top: 3px;
    margin-left: 80px;
@@ -398,7 +408,7 @@
    width: 20px;
    height: 30px;
    margin: '0 auto',
- }
+ } */
 
 
  /* the Dialog contents containing the checkbox */
@@ -413,8 +423,8 @@
  }
 
  .dialogCheckBox {
-    margin-left: 10px;
- }
+  margin-left: 10px;
+}
 
  /*maximum width*/
 
@@ -427,25 +437,30 @@
  .mat-datepicker-content-touch
  .mat-calendar {
   background-color: white !important;
+  outline: none !important;
  }
 .mat-icon-button {
   background-color: #2DBD9B !important;
   color: white !important;
+  outline: none !important;
  }
  .mat-calendar-period-button {
   background-color: #2DBD9B !important;
   color: white !important;
+  outline: none !important;
  }
 
  .mat-button-ripple
  .mat-ripple
  .mat-button-ripple-round {
   background-color: #C0FFF1 !important;
+  outline: none !important;
  }
 
  .mat-button-ripple
  .mat-ripple {
   background-color: #C0FFF1 !important;
+  outline: none !important;
  }
 
  .mat-calendar-body-selected{

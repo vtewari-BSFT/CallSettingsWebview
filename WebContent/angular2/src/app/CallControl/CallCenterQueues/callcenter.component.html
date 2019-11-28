@@ -40,7 +40,7 @@
                     <mat-list-item>
                         <p mat-line class="secondLevelSettingLeftPadding primaryContentText restrictiveLabelStyle" [class.errorTextColor]="ccElement.errorMessage" tabindex="0">{{ccElement.callCenterName}}</p>
                         <mat-spinner [diameter]="20" [class.callsettingHide]="!ccElement.updateInprogress"> </mat-spinner>
-                        <mat-slide-toggle [checked]="ccElement.getCallCenterActive()" (change)="callcenterActiveChange(ccElement)" (keyup.enter)="callcenterActiveChange(ccElement)" tabindex="0">
+                        <mat-slide-toggle [disabled]="(ccElement.getAllowAgentLogoff() !== 'true')" [checked]="ccElement.getCallCenterActive()" (change)="callcenterActiveChange(ccElement)" (keyup.enter)="callcenterActiveChange(ccElement)" tabindex="0">
                         </mat-slide-toggle>
                     </mat-list-item>
                     <mat-list-item *ngIf="ccElement.number">

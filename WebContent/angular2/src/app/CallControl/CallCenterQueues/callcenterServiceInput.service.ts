@@ -149,10 +149,20 @@ export class CallCenterServiceInput {
     }
 
     setCallCenterName(callCenterName, index) {
-
         this.callcenterArray[index].setCallCenterName(callCenterName);
         console.log('index >>> callcenter name >>>', this.callcenterArray[index].getCallCenterName());
     }
+
+    setType(type, index) {
+      this.callcenterArray[index].setType(type);
+      console.log('index >>> callcenter type >>>', this.callcenterArray[index].getType());
+  }
+
+   setAllowAgentLogoff(allowAgentLogoff, index) {
+    this.callcenterArray[index].setAllowAgentLogoff(allowAgentLogoff);
+    console.log('index >>> callcenter allow Agent Logoff >>>', this.callcenterArray[index].getAllowAgentLogoff());
+}
+
 
     setIsUCenabled(isUCEnabled) {
 
@@ -194,6 +204,8 @@ export class CallCenterArray {
     private active;
     private extension;
     private callCenterName;
+    private type;
+    private allowAgentLogoff;
     private updateInprogress = false;
     private errorMessage;
 
@@ -203,6 +215,8 @@ export class CallCenterArray {
         this.extension = extension;
         this.active = active;
         this.callCenterName = '';
+        this.type = '';
+        this.allowAgentLogoff;
     }
     getCallCenterId() {
         return this.callCenterId;
@@ -238,9 +252,24 @@ export class CallCenterArray {
 
     getCallCenterName() {
         return this.callCenterName;
+
+    }
+    getType() {
+      return this.type;
+    }
+    getAllowAgentLogoff() {
+      return  this.allowAgentLogoff;
     }
     setCallCenterName(callCenterName: string) {
         this.callCenterName = callCenterName;
+    }
+
+    setType(type: string) {
+      this.type = type;
+    }
+
+    setAllowAgentLogoff(allowAgentLogoff: string) {
+      this.allowAgentLogoff = allowAgentLogoff;
     }
 
     getErrorMsg() {

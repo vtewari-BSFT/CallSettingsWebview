@@ -26,7 +26,6 @@ export class SequentialRingService {
 
   // Method to Get the values from the XSI and set the POJO with the values...
   getSequentialRingService(SequentialRingUrl, postSequentialRingGet) {
-
     this.httpservices.httpGetRequest(SequentialRingUrl)
       .subscribe((res) => {
         console.log('Sequential Ring Response Data Received: ', res.json());
@@ -43,7 +42,8 @@ export class SequentialRingService {
         this.sequentialRingServiceInput.setCriteriaArrayInit(this.sequentialRingParsedJson);
         this.sequentialRingServiceInput.setIsSequentialRingActive(this.fetchIsSequentialRingActive());
         postSequentialRingGet(this.sequentialRingParsedJson);
-      }, (err) => {
+      },
+      (err) => {
         console.log('Error getting the values in Sequential Ring.');
         postSequentialRingGet(null);
       });

@@ -12,6 +12,8 @@ import { CallCenterArray } from 'app/CallControl/CallCenterQueues/callcenterServ
 export class CallCenterService {
     customizedTextJson = window['customizedTexts'];
     private res: Response;
+    public type: string;
+    public allowAgentLogoff: string;
     private headers: Headers = new Headers();
     callCenterArray: CallCenterArray[];
 
@@ -23,7 +25,6 @@ export class CallCenterService {
                 let ccParsedJson = res.json();
                 if (ccParsedJson['CallCenter']['agentACDState']) {
                     let acdStateInput = ccParsedJson['CallCenter']['agentACDState']['$'];
-
                     if (acdStateInput === 'Sign-In') {
                         acdStateInput = this.customizedTextJson.callcenter.sign_in;
                     } else if (acdStateInput === 'Sign-Out') {
@@ -53,7 +54,6 @@ export class CallCenterService {
     }
 
     getUnavailableCodes(unavailableCodeUrl, postUCget) {
-
         this.httpservices.httpGetRequest(unavailableCodeUrl)
             .subscribe((res) => {
                 let ucParsedJson = (res.json());
@@ -62,10 +62,9 @@ export class CallCenterService {
                 if (this.callcenterServiceInput.getIsUCenabled()) {
                     this.callcenterServiceInput.setUnavailableCodeArray(ucParsedJson);
                 }
-
                 postUCget(null);
             }, (err) => {
-                postUCget(err);
+                  postUCget(err);
             })
 
     }
@@ -74,7 +73,11 @@ export class CallCenterService {
         this.httpservices.httpGetRequest(ccNameUrl)
             .subscribe((res) => {
                 let ccNameParsedJson = (res.json());
+                this.type = ccNameParsedJson.ACDProfile.type.$;
+                this.allowAgentLogoff = ccNameParsedJson.ACDProfile.allowAgentLogoff.$;
                 this.callcenterServiceInput.setCallCenterName(ccNameParsedJson.ACDProfile.serviceInstanceProfile.name.$, index);
+                this.callcenterServiceInput.setType(ccNameParsedJson.ACDProfile.type.$, index);
+                this.callcenterServiceInput.setAllowAgentLogoff(ccNameParsedJson.ACDProfile.allowAgentLogoff.$, index);
 
                 postCCnameGet(null);
             }, (err) => {
@@ -90,11 +93,9 @@ export class CallCenterService {
 
         if (acdState === this.customizedTextJson.callcenter.sign_in) {
             acd = 'Sign-In';
-        }
-        else if (acdState === this.customizedTextJson.callcenter.sign_out) {
+        } else if (acdState === this.customizedTextJson.callcenter.sign_out) {
             acd = 'Sign-Out';
-        }
-        else if (acdState === this.customizedTextJson.callcenter.wrap_up) {
+        } else if (acdState === this.customizedTextJson.callcenter.wrap_up) {
             acd = 'Wrap-Up';
         } else if (acdState === this.customizedTextJson.callcenter.available) {
             acd = 'Available';

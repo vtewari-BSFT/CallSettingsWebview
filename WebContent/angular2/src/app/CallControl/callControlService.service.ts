@@ -12,6 +12,8 @@ export class CallControlService {
 
     getProfileData(profileUrl, postProfileDataGet) {
 
+        console.log('profileUrl =========>', profileUrl);
+
         this.httpServices.httpGetRequest(profileUrl)
         .subscribe((res) => {
             let profileParsedJson = res.json();
@@ -29,6 +31,7 @@ export class CallControlService {
                 console.log('groupId Not Found')
             }
 
+            console.log('Details >>>>>', profileParsedJson.Profile.details)
 
             if (profileParsedJson.Profile.details.serviceProvider.$) {
                 this.callControlServiceInput.setIsEnterprise(profileParsedJson['Profile']['details']['serviceProvider']['@isEnterprise']);

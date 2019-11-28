@@ -67,6 +67,7 @@ option{
 
 .mat-list-item-content{
     font-family:<FontFamily> !important ; /*font-style*/
+    outline: none !important;
 }
 
 .restrictiveButtonStyle{
@@ -184,6 +185,7 @@ option{
 .mat-checkbox-inner-container {
     height: <RestrictiveLabelStyle>px !important; /*restrictiveLabelStyle*/
     width: <RestrictiveLabelStyle>px !important; /*restrictiveLabelStyle*/
+    margin: auto 8px 14px 0px !important;
 }
 
 .mat-checkbox-label{
@@ -227,11 +229,13 @@ option{
  .mat-ripple
  .mat-button-ripple-round {
      background-color: <PrimaryButton> !important; /*PrimaryButton */
+      outline: none !important;
  }
 
  .mat-button-ripple
  .mat-ripple {
     background-color: <PrimaryButton> !important; /*PrimaryButton */
+     outline: none !important;
  }
 
  .buttonClass {

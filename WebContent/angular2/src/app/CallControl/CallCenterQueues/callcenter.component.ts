@@ -268,7 +268,7 @@ export class CallCenterComponent implements OnInit {
   }
 
   postUCget(error) {
-    if (!error) {
+    if ((!error) || ((error.status === 400) && (error._body) && (JSON.parse(error._body).ErrorInfo.errorCode.$ === '4398'))) {
 
       console.log('Unavailable codes fetched');
 

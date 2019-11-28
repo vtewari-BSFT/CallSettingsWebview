@@ -1,50 +1,46 @@
 /* Copyright © 2017 BroadSoft Inc. */
 
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable()
-
 export class CallControlServiceInput {
+  private primaryNumber;
+  private groupId;
+  private serviceProviderId;
+  private isEnterprise;
+  private enterpriseId;
 
-    private primaryNumber;
-    private groupId;
-    private serviceProviderId;
-    private isEnterprise;
+  constructor() {}
 
-    constructor() { }
+  setPrimaryNumber(primaryNumber) {
+    this.primaryNumber = primaryNumber;
+  }
 
-    setPrimaryNumber(primaryNumber) {
-        this.primaryNumber = primaryNumber;
-    }
+  getPrimaryNumber() {
+    return this.primaryNumber;
+  }
 
-    getPrimaryNumber() {
-        return this.primaryNumber;
-    }
+  setGroupId(groupId) {
+    this.groupId = groupId;
+  }
 
-    setGroupId(groupId) {
-        this.groupId = groupId;
-    }
+  getGroupId() {
+    return this.groupId;
+  }
 
-    getGroupId() {
-        return this.groupId;
-    }
+  setIsEnterprise(isEnterprise) {
+    this.isEnterprise = isEnterprise;
+  }
 
-    setIsEnterprise(isEnterprise) {
-        this.isEnterprise = isEnterprise;
-    }
+  getIsEnterprise() {
+    return this.isEnterprise;
+  }
 
-    getIsEnterprise() {
-        return this.isEnterprise;
-    }
+  setServiceProviderId(serviceProviderId) {
+    this.serviceProviderId = serviceProviderId;
+  }
 
-
-    setServiceProviderId(serviceProviderId) {
-        this.serviceProviderId = serviceProviderId;
-    }
-
-    getServiceProviderId() {
-        return this.serviceProviderId;
-    }
-
-
+  getServiceProviderId() {
+    return this.serviceProviderId;
+  }
 }

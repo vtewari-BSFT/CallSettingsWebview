@@ -21,7 +21,7 @@
         <mat-spinner [diameter]="20" [class.callsettingHide]="!isSimRingUpdateInProgress"> </mat-spinner>
         <mat-slide-toggle [checked]="isRingNumbersChecked" (change)="ringNumberSwitch()" (keyup.enter)="ringNumberSwitch()" tabindex="0"> </mat-slide-toggle>
     </mat-list-item>
-    
+
     <p mat-line class="callsettingPanelHeaderServerErrorMsg" *ngIf="simRingUpdateError">
         <label class="restrictiveSmallLabelStyle errorTextColor callSettingsFontFamily" tabindex="0">{{simRingUpdateError}}</label>
     </p>
@@ -32,7 +32,7 @@
         <mat-list class="controlBackground primaryContentText">
             <mat-list-item>
                 <p mat-line class="secondLevelSettingLeftPadding">
-                    <mat-form-field class="restrictiveLabelStyle inputNumberWidth placeholderText" floatLabel="never" (keyup.enter)="simultaneousRingNumberEntered($event)" 
+                    <mat-form-field class="restrictiveLabelStyle inputNumberWidth placeholderText" floatLabel="never" (keyup.enter)="simultaneousRingNumberEntered($event)"
                     [class.callsettingErrorInput]="simRing.error"  [class.inputInvokedColor]="simRing.validNumber">
                         <input matInput class="inputNumberWidth callsettingMarginNone" id="{{i}}_simRing" (keyup)="onPhonenumberChange($event);"
                             (blur)="simultaneousRingNumberEntered($event)" (focus)="onfocus(simRing)"
@@ -40,13 +40,13 @@
                             <mat-placeholder class="placeholder">{{this.customizedTextJson.set_number}}</mat-placeholder>
                     </mat-form-field>
                 </p>
-                
+
                 <p mat-line class="callsettingSimultaneousRingFieldError" *ngIf="simRing.error"><label class="restrictiveSmallLabelStyle errorTextColor" tabindex="0">{{simRing.error}}</label></p>
                 <p [class.callsettingHide]="!simRing.getNumber()" mat-line class="callsettingSimultaneousRingNumberInput">
                     <mat-checkbox id="{{i}}_simRingOption" *ngIf="!simRing.error" [checked]="simRing.getIsAnswerConfirmationRequired()" tabindex="0"
                         [disableRipple]=true (change)="updateAnswerConfirmationRequired(simRing)" (keyup.enter)="updateAnswerConfirmationRequired(simRing)">{{customizedTextJson.simultaneous_ring.answer_confirmation_required}}</mat-checkbox>
                 </p>
-                
+
             </mat-list-item>
         </mat-list>
     </div>

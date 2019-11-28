@@ -211,7 +211,7 @@ public class CustomStylesServlet extends HttpServlet {
 	
 	  public static void main(String args[]) {
 	  
-		String queryString = "userDomain=10.99.4.110&platform=android_Mob&FontFamily=Roboto&PrimaryButton=#2DBD9B&ContentBackground=#ffffff&ControlBackground=#F8F8F8&PrimaryBackground=#2DBD9B&PrimaryText=#FFFFFF&PrimaryContentText=#323232&DimmedText=#b4b4b4&Separators=#f0f0f0&SymbolicGreen=#2DBD9B&SymbolicRed=#ff3347&RestrictiveSmallLabelStyle=10&RestrictiveButtonStyle=14&RestrictiveLabelStyle=12";
+		String queryString = "userDomain=10.242.144.55&platform=android_Mob&FontFamily=Roboto&PrimaryButton=#2DBD9B&ContentBackground=#ffffff&ControlBackground=#F8F8F8&PrimaryBackground=#2DBD9B&PrimaryText=#FFFFFF&PrimaryContentText=#323232&DimmedText=#b4b4b4&Separators=#f0f0f0&SymbolicGreen=#2DBD9B&SymbolicRed=#ff3347&RestrictiveSmallLabelStyle=10&RestrictiveButtonStyle=14&RestrictiveLabelStyle=12";
 
 		CustomStylesServlet servlet = new CustomStylesServlet();
 		Map<String, String> brandableValues = servlet.getBrandedValuesFromRequest(queryString);

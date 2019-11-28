@@ -12,7 +12,7 @@
         <p mat-line class="restrictiveLabelStyle" tabindex="0">{{customizedTextJson.broadworks_anywhere.alert_all_locations}}</p>
         <mat-spinner [diameter]="20" style="margin-left: 20px; margin-bottom: 8px" [class.callsettingHide]="isResReceived"></mat-spinner>
         <mat-slide-toggle (change)="updateAlertAllLocations()" (keyup.enter)="updateAlertAllLocations()" [checked]="isAlertAllLocationsChecked" tabindex="0"> </mat-slide-toggle>
-        
+
     </mat-list-item>
 </mat-list>
 
@@ -37,7 +37,7 @@
                     <mat-form-field class="restrictiveLabelStyle inputNumberWidth placeholderText" floatLabel="never" [class.inputInvokedColor]="location.numberInpFieldFocused"
                         [class.callsettingErrorInput]="location.ringNumberDelErr||location.ringNoToggleErr||location.phoneNumUpdErr">
                         <input matInput class="inputNumberWidth callsettingMarginNone" [(ngModel)]="location.phoneNumber"
-                            (blur)="updateRingNumber($event, location)" id="phNum" (keyup.enter)="updateRingNumber($event, location)"
+                            (blur)="updateRingNumber($event, location)" id="phNum"  (keyup.enter)="updateRingNumber($event, location)"
                             (keyup)="focusNumberInput($event, location);" tabindex="0">
                             <mat-placeholder class="placeholder">{{this.customizedTextJson.set_number}}</mat-placeholder>
                     </mat-form-field>
@@ -56,7 +56,7 @@
                 <p mat-line class="thirdLevelSettingLeftPadding broadworksAnywhereAlign">
                     <mat-form-field class="restrictiveLabelStyle inputNumberWidth placeholderText" floatLabel="never" [class.inputInvokedColor]="location.descInpFieldFocused"
                         [class.callsettingErrorInput]="location.descError">
-                        <input matInput class="inputNumberWidth callsettingMarginNone" 
+                        <input matInput class="inputNumberWidth callsettingMarginNone"
                             [(ngModel)]="location.description" id="desc" (blur)="updateDescription($event, location)" (keyup.enter)="updateDescription($event, location)"
                             type="text" (keyup)="focusDescField($event, location)" (change)="changeDescription()" tabindex="0">
                             <mat-placeholder class="placeholder">{{this.customizedTextJson.broadworks_anywhere.set_description}}</mat-placeholder>
@@ -96,7 +96,7 @@
                         <mat-placeholder class="placeholder">{{this.customizedTextJson.set_number}}</mat-placeholder>
                 </mat-form-field>
             </p>
-            <!-- <mat-slide-toggle (change)="isRingNumberActive(location);" class="toggleAlign"> </mat-slide-toggle> -->
+            <mat-slide-toggle (change)="isRingNumberActive(location);" class="toggleAlign"> </mat-slide-toggle>
             <p mat-line class="secondLevelSettingLeftPadding" *ngIf="phoneNumberValidationErr">
                 <label class="restrictiveSmallLabelStyle errorTextColor" tabindex="0">{{phoneNumberValidationErr}}</label></p>
         </mat-list-item>

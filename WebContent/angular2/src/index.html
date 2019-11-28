@@ -9,8 +9,7 @@
   <title>Call Settings</title>
   <base href="./">
 
-  <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <link href='assets/css/default.css' rel='stylesheet' type='text/css'>
   <link href='assets/css/branding.css' rel='stylesheet' type='text/css'>
   <link href='assets/fonts/roboto/webfont.css' rel='stylesheet' type='text/css'>
@@ -258,10 +257,10 @@
     };
 
     var devModeCallSettingsJSON = {
-      "userId": "devuser1@arun23.com",
+      "userId": "caums1x02@gcpqa21.12bar.net",
 
       "authorization": "BroadWorksSSO ",
-      "deviceMobileNo": "3693691024",
+      "deviceMobileNo": "2401102197",
       "language": "en_US",
       "platform": "iOS_Mob",
       "services": [{
@@ -341,9 +340,9 @@
     }
     this.isAccessible = "";
     var devModeUserId = devModeCallSettingsJSON.userId;
-    var devModePwd = "111111";
+    var devModePwd = "Welcom3";
     var devModeXspURL = devModeCallSettingsJSON.xsp;
-    var devModeProxyServerURL = 'http://localhost:8080/BWWebProxy/proxy';
+    var devModeProxyServerURL = 'http://localhost:8081/BWWebProxy/proxy';
 
     var devModeBaseXsiURL = devModeXspURL + "/com.broadsoft.xsi-actions/v2.0/user";
 
@@ -361,7 +360,7 @@
       window['applicationMode'] = "dev";
       window['callSettingsHeroInput'] = devModeCallSettingsJSON;
       window['customizedTexts'] = customizedTexts;
-      window['xsiActionsBaseURL'] = "http://10.143.63.55/com.broadsoft.xsi-actions";
+      window['xsiActionsBaseURL'] = "http://10.242.144.55/com.broadsoft.xsi-actions";
       window['devUserPwd'] = devModePwd;
       window['locale'] = "en_US"
 

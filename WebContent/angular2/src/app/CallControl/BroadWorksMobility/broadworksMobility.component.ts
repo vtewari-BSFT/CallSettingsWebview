@@ -1040,6 +1040,7 @@ export class BroadworksMobilityComponent implements OnInit {
       if (result[i].indexOf(this.customizedTextJson.broadworks_mobility.call_anchoring) > -1) {
         this.allSelectedGeneralSettingsOptions.push(this.customizedTextJson.broadworks_mobility.call_anchoring);
       }
+    }
 
 
       if (this.isDesktop) {
@@ -1058,9 +1059,8 @@ export class BroadworksMobilityComponent implements OnInit {
 
       this.sendSelectedGeneralSettingsOptions();
 
-
       this.previousSelectedGenSetting = this.allSelectedGeneralSettingsOptions;
-  }
+
   }
   private showGeneralSettingsDropdown() {
 
@@ -1077,7 +1077,6 @@ export class BroadworksMobilityComponent implements OnInit {
 
   private sendSelectedGeneralSettingsOptions() {
 
-
     this.selectGenSettingsErrMsg = '';
 
     this.broadWorksMobilityService.putSelectedGeneralSettingsOptions(this.serviceRouteProvider.fetchBroadWorksMobilityUrl(), this.allSelectedGeneralSettingsOptions, this.postSelectedGeneralSettingsOptionsPut.bind(this));
@@ -1087,14 +1086,7 @@ export class BroadworksMobilityComponent implements OnInit {
 
   postSelectedGeneralSettingsOptionsPut(error) {
 
-    if (error) {
-      if (error.status === 0) {
-        this.selectGenSettingsErrMsg = this.customizedTextJson.error.networkerror;
-      } else {
-        this.selectGenSettingsErrMsg = this.util.frameErrorMessage(this.customizedTextJson.error.updatefailed, error.status);
-      }
-
-    }
+ if (!error) {
     this.isAlertAgentCallsChecked = this.broadWorksMobilityService.fetchIsAlertAgentCallsChecked();
     this.isAlertClickToDialCallsChecked = this.broadWorksMobilityService.fetchIsAlertClickToDialCallsChecked();
     this.isAlertGroupPagingCallsChecked = this.broadWorksMobilityService.fetchIsAlertGroupPagingCallsChecked();
@@ -1103,6 +1095,13 @@ export class BroadworksMobilityComponent implements OnInit {
     this.isAnswerConfirmationRequiredChecked = this.broadWorksMobilityService.fetchIsAnswerConfirmationRequiredChecked();
     this.isBroadworksCallControlChecked = this.broadWorksMobilityService.fetchIsBroadworksCallControlChecked();
     this.isCallAnchoringChecked = this.broadWorksMobilityService.fetchIsCallAnchoringChecked();
+    } else if (error) {
+      if (error.status === 0) {
+        this.selectGenSettingsErrMsg = this.customizedTextJson.error.networkerror;
+      } else {
+        this.selectGenSettingsErrMsg = this.util.frameErrorMessage(this.customizedTextJson.error.updatefailed, error.status);
+      }
+    }
   }
 
   /* ================================ */

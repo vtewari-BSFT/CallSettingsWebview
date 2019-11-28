@@ -23,12 +23,12 @@
         </select>
     </mat-list-item>
     <mat-list-item class="nestedListItemBottomPadding selectListItemComponent"  *ngIf="isRingBaseLocationChecked">
-           <p mat-line class="secondLevelSettingLeftPadding"><mat-checkbox  [disableRipple]=true [checked]="isContinueIfBusyChecked" 
+           <p mat-line class="secondLevelSettingLeftPadding"><mat-checkbox  [disableRipple]=true [checked]="isContinueIfBusyChecked"
            (change)="updateContinueIfBusy($event)" (keyup.enter)="updateContinueIfBusy($event)" tabindex="0">{{customizedTextJson.sequential_ring.continue_if_busy}}</mat-checkbox></p>
     </mat-list-item>
     <mat-list-item class="itemHeight44 settingBorder">
          <p mat-line class="restrictiveLabelStyle" tabindex="0">{{customizedTextJson.sequential_ring.caller_may_cancel}}</p>
-        
+
         <mat-spinner [diameter]="20"  [class.callsettingHide]="!callerCancelUpdateInProgress"> </mat-spinner>
         <mat-slide-toggle [checked]="isCallerMayCancelChecked" (change)="updateCallerMayCancel($event)" (keyup.enter)="updateCallerMayCancel($event)" tabindex="0"> </mat-slide-toggle>
     </mat-list-item>
@@ -39,7 +39,7 @@
 <mat-list class="controlBackground primaryContentText">
  <mat-list-item class="settingBorder itemHeight44" >
         <label class="restrictiveLabelStyle" [class.errorTextColor]="seqRingUpdateError" (keyup.enter)="ringNumbersExpand()" tabindex="0">{{customizedTextJson.sequential_ring.ring_numbers}}</label>
-        
+
         <mat-spinner [diameter]="20" [class.callsettingHide]="!ringNumbersUpdateProgress"> </mat-spinner>
             <div *ngIf="isRingNumberExpanded == true" class= "settingCollapseIcon">
             </div>
@@ -57,7 +57,7 @@
         <mat-list class="controlBackground primaryContentText">
             <mat-list-item>
                 <p mat-line class="secondLevelSettingLeftPadding">
-                    <mat-form-field class="restrictiveLabelStyle inputNumberWidth placeholderText" floatLabel="never" 
+                    <mat-form-field class="restrictiveLabelStyle inputNumberWidth placeholderText" floatLabel="never"
                      [class.callsettingErrorInput]="seqRing.error"  [class.inputInvokedColor]="seqRing.validNumber">
                         <input matInput class="inputNumberWidth callsettingMarginNone" id="{{i}}_seqRing" (keyup)="onNumberChangeUp($event)" (keyup.enter)="sequentialRingNumberEntered($event)"
                         (blur)="sequentialRingNumberEntered($event)" (focus)="onfocus(seqRing)"
@@ -88,7 +88,7 @@
         </div>
     </div>
 </div>
-    
+
 <mat-card>
     <mat-card (click)="whenToRingChecked()"  class="controlBackground seqCard">
         <mat-card-title class="restrictiveLabelStyle callSettingsFontFamily primaryContentText" (keyup.enter)="whenToRingChecked()" tabindex="0" >{{customizedTextJson.sequential_ring.when_to_ring}}</mat-card-title>

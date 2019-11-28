@@ -20,18 +20,18 @@ var localeCustomTexts = @codeCustomTextAssign@;
 var xhttp = new XMLHttpRequest();
 var isTextsLoaded = false;
 
-(function () { 
-	
+(function () {
+
 	xhttp.onreadystatechange = function() {
 	    if (this.readyState == 4 && this.status == 200) {
 				window['customizedTexts'] = JSON.parse(this.responseText);
 	    }
-	    
+
 	    isTextsLoaded = true;
 	};
 	xhttp.open('GET', 'customTexts?userDomain=' + userDomain + '&language=' + callSettingsHeroInput.language, true);
 	xhttp.send();
-	
+
 })();
 
 
@@ -43,29 +43,29 @@ customStyleUrl = customStyleUrl + 'userDomain=' + userDomain;
 customStyleUrl = customStyleUrl + '&platform=' + ((callSettingsHeroInput.platform != null && callSettingsHeroInput.platform != '') ? callSettingsHeroInput.platform : 'iOS_Mob');
 
 if(callSettingsHeroInput.branding != null) {
-	
+
 	customStyleUrl = customStyleUrl + '&FontFamily=' + callSettingsHeroInput.branding.fontStyle;
-	
+
 	if(callSettingsHeroInput.branding.color != null) {
-		
+
 		var fontColors = callSettingsHeroInput.branding.color;
 		for(var fontColor in fontColors) {
 			if (fontColors.hasOwnProperty(fontColor)) {
-				
+
 				customStyleUrl = customStyleUrl + '&' + fontColor + '=' + ((fontColors[fontColor] == null) ? '' : fontColors[fontColor]);
-				
+
 			}
 		}
 	}
-	
+
 	if(callSettingsHeroInput.branding.fontSize != null) {
-		
+
 		var fontSizes = callSettingsHeroInput.branding.fontSize;
 		for(var fontSize in fontSizes) {
 			if (fontSizes.hasOwnProperty(fontSize)) {
-				
+
 				customStyleUrl = customStyleUrl + '&' + fontSize + '=' + ((fontSizes[fontSize] == null) ? '' : fontSizes[fontSize]);
-				
+
 			}
 		}
 	}
@@ -78,9 +78,9 @@ var customStyleUrlString = 'customStyle?' + encodeURIComponent(customStyleUrl);
 	  newstyle.setAttribute("id", "brandedStyle");
 	  newstyle.setAttribute("rel", "stylesheet");
 	  newstyle.setAttribute("type", "text/css");
-	  newstyle.setAttribute("href", customStyleUrlString); 
+	  newstyle.setAttribute("href", customStyleUrlString);
 	  document.getElementsByTagName("head")[0].appendChild(newstyle);
-	  
+
 	})();
 
 </script>
@@ -88,25 +88,25 @@ var customStyleUrlString = 'customStyle?' + encodeURIComponent(customStyleUrl);
 <script type="text/javascript">
 
 	(function () {
-		
+
 		window['applicationMode'] = "prod";
 		window['callSettingsHeroInput'] = callSettingsHeroInput;
 		if (!window['customizedTexts']) {
 			window['customizedTexts'] = localeCustomTexts;
 		}
 		window['xsiActionsBaseURL'] = xsiActionsBaseURL;
-	
+
 		// Developer mode constants
-		window['devUserPwd'] = "111111";
+		window['devUserPwd'] = "Welcom3";
 		if(window.location.href.indexOf("brandable") > 0) {
 			window['applicationMode'] = "qa";
 		}
-	
+
 		window['locale'] = callSettingsHeroInput.language;
-		
+
 	})();
-	
-	
+
+
 </script>
 
 <html>
@@ -114,7 +114,7 @@ var customStyleUrlString = 'customStyle?' + encodeURIComponent(customStyleUrl);
  <meta charset="utf-8">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <title>@appName@</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 <link href='assets/fonts/roboto/webfont.css' rel='stylesheet' type='text/css'>
 <script src='assets/fonts/roboto/webfont.js'></script>

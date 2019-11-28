@@ -3,10 +3,13 @@ import { BroadworksAnywhereServiceInput } from 'app/CallControl/BroadworksAnywhe
 import { HttpServices } from 'app/AppCommon/httpservices.service';
 import { BroadWorksAnywhereLocationsInput } from 'app/CallControl/BroadworksAnywhere/broadworksAnywhereLocationsInput.service';
 import { Util } from 'app/AppCommon/util';
+import { Http, Response, Request, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
 
 export class BroadworksAnywhereService {
+  private res: Response;
+  private headers: Headers = new Headers();
 
     constructor(private httpServices: HttpServices, private broadworksAnywhereServiceInput: BroadworksAnywhereServiceInput,
         private broadWorksAnywhereLocationsInput: BroadWorksAnywhereLocationsInput, private util: Util) { }
@@ -183,29 +186,24 @@ export class BroadworksAnywhereService {
         let locationUrl, UpdNumberIndx = -1;
         this.httpServices.httpPostRequest(bwAnywhereLocationUrl, body)
             .subscribe((res) => {
-                let existingLocations = this.broadworksAnywhereServiceInput.getBWAnywhereLocations();
-                if (window['applicationMode'] === 'dev') {
-                    locationUrl = this.util.getBWAnywhereLocationUrl(userInpRingNumber);
-                } else {
-                    let map = res.headers;
-                    locationUrl = map.get('location')[0];
-                }
-                if (existingLocations) {
-                    this.updateExistingLocs(existingLocations, locationUrl, userInpRingNumber);
-                } else {
-                    let newLocation = [];
-                    newLocation.push({
-                        'phoneNumber': { '$': userInpRingNumber },
-                        'isActive': { '$': 'true' },
-                        'description': { '$': '' },
-                        'locationUri': { '$': locationUrl }
-                    });
-                    this.broadworksAnywhereServiceInput.setBWAnywhereLocations(newLocation);
-                }
-                this.broadWorksAnywhereLocationsInput.setLocationUrl(locationUrl)
-                this.broadWorksAnywhereLocationsInput.setRingNumber(userInpRingNumber);
-                this.setBWAnywhereLocInputs(isExistingNoGettingUpd, location)
-                postNewRingNumberPost(null, isExistingNoGettingUpd, location);
+              let existingLocations = this.broadworksAnywhereServiceInput.getBWAnywhereLocations();
+                  locationUrl = this.util.getBWAnywhereLocationUrl(userInpRingNumber);
+              if (existingLocations) {
+                  this.updateExistingLocs(existingLocations, locationUrl, userInpRingNumber);
+              } else {
+                  let newLocation = [];
+                  newLocation.push({
+      'phoneNumber': { '$': userInpRingNumber },
+                      'isActive': { '$': 'true' },
+                      'description': { '$': '' },
+                      'locationUri': { '$': locationUrl }
+                  });
+                  this.broadworksAnywhereServiceInput.setBWAnywhereLocations(newLocation);
+              }
+              this.broadWorksAnywhereLocationsInput.setLocationUrl(locationUrl)
+              this.broadWorksAnywhereLocationsInput.setRingNumber(userInpRingNumber);
+              this.setBWAnywhereLocInputs(isExistingNoGettingUpd, location)
+              postNewRingNumberPost(null, isExistingNoGettingUpd, location);
             },
             (err) => {
                 postNewRingNumberPost(err, isExistingNoGettingUpd, location);
@@ -213,7 +211,6 @@ export class BroadworksAnywhereService {
     }
 
     updateExistingLocs(existingLocations, locationUrl, userInpRingNumber) {
-
         let UpdNumberIndx = -1;
         if (existingLocations.constructor === Array) {
             existingLocations.push({

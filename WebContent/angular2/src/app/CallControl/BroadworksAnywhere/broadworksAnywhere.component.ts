@@ -189,7 +189,6 @@ export class BroadworksAnywhereComponent implements OnInit {
   }
 
   doNotForwardChecked(location) {
-
     this.clearErrorMsgs(location);
     if (location.doNotForward) {
       location.doNotForward = false;
@@ -322,7 +321,7 @@ export class BroadworksAnywhereComponent implements OnInit {
       if (isExistingNoGettingUpd) {
         this.updateExistingNumber(location, isExistingNoGettingUpd);
       } else {
-        this.bwAnywhereLocationsUI.push({
+           this.bwAnywhereLocationsUI.push({
           'phoneNumber': this.broadworksAnywhereService.fetchRingNumber(),
           'isActive': this.broadworksAnywhereService.fetchIsRingNumberEnabled(),
           'description': this.broadworksAnywhereService.fetchDescription(),

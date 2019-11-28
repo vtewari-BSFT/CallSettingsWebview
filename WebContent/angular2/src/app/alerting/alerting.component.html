@@ -1,18 +1,18 @@
 <div class="dialogContainer">
   <mat-dialog-content minHeight="7">
     <br>
-    <div id="popUpCheckbox" class="popUpCheckbox" tabindex="1"> 
+    <div id="popUpCheckbox" class="popUpCheckbox" tabindex="1">
  <mat-checkbox class="dialogCheckBox" *ngFor="let genOpt of data.mngsDOList" [attr.data-value]="genOpt.name"[checked]="genOpt.checked" [(ngModel)]="genOpt.checked" [value]="allSelectedGeneralSettingsOptions && allSelectedGeneralSettingsOptions.lastIndexOf(genOpt.name)>-1" tabindex="1">{{genOpt.getName()}}</mat-checkbox>
 
     </div>
-  
-  
+
+
                     <!-- <select *ngIf="!isDesktop" id="mngsSelectDropdown" class="cswFullWidth cswSelectDropdown restrictiveLabelStyle callSettingsFontFamily" size="{{mngsDOList.length < 3 ? mngsDOList.length : 3}}"
                          (change)="onUpdateGeneralSettingOptions($event);" [class.cswInputContainerFocus]="isMNGSDOptionsFocused" (focus)="showGeneralSettingsDropdown();" (blur)="onMNGSDOptionsBlur()" multiple>
                         <option *ngFor="let genOpt of mngsDOList" [value]="genOpt.name" class="restrictiveLabelStyle"
                           [selected]="allSelectedGeneralSettingsOptions && allSelectedGeneralSettingsOptions.lastIndexOf(genOpt.name)>-1" tabindex="0">{{genOpt.getName()}}</option>
                     </select> -->
-                     
+
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button (click)="onNoClick()" class="buttonClass">{{this.customizedTextJson.dialog.cancel}}</button>
