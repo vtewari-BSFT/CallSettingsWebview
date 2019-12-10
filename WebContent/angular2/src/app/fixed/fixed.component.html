@@ -1,12 +1,12 @@
 <div class="dialogContainer">
     <mat-dialog-content minHeight="7">
       <br>
-      <div id="popUpCheckbox" class="popUpCheckbox" tabindex="1"> 
-        <mat-checkbox class="dialogCheckBox" *ngFor="let opt of data.mnrfdDOList" [attr.data-value]="opt.name" [checked]="opt.checked" [(ngModel)]="opt.checked" [value]="allSelectedSettingsMobileNumber && allSelectedSettingsMobileNumber.lastIndexOf(opt)>-1" tabindex="1">{{opt.getName()}}</mat-checkbox>
+      <div id="popUpCheckbox" class="popUpCheckbox" tabindex="1">
+        <mat-checkbox class="dialogCheckBox" *ngFor="let opt of data.mnrfdDOList" [attr.data-value]="opt.name" [checked]="opt.checked" [(ngModel)]="opt.checked" [value]="data.allSelectedSettingsMobileNumber && data.allSelectedSettingsMobileNumber.lastIndexOf(opt)>-1" tabindex="1">{{opt.getName()}}</mat-checkbox>
       </div>
-    
-    
-  
+
+
+
 
                       <!-- <select *ngIf="!isDesktop" id="mnrfdSelectDropdown" class="cswFullWidth cswSelectDropdown restrictiveLabelStyle callSettingsFontFamily" size="{{cOptions.length < 4 ? cOptions.length : 4}}"
                     (change)="onUpdateOptionsInsideMobileNumber($event);" [class.cswInputContainerFocus]="isMNRFDOptionsFocused" (focus)="showCurrentOptionsDropdownUnderMobileIdentity();" (blur)="onMNRFDOptionsBlur()" multiple>
@@ -16,7 +16,7 @@
 
 
 
-                       
+
     </mat-dialog-content>
     <mat-dialog-actions>
       <button mat-button (click)="onNoClick()" class="buttonClass">{{this.customizedTextJson.dialog.cancel}}</button>

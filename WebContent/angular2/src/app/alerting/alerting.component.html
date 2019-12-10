@@ -2,7 +2,7 @@
   <mat-dialog-content minHeight="7">
     <br>
     <div id="popUpCheckbox" class="popUpCheckbox" tabindex="1">
- <mat-checkbox class="dialogCheckBox" *ngFor="let genOpt of data.mngsDOList" [attr.data-value]="genOpt.name"[checked]="genOpt.checked" [(ngModel)]="genOpt.checked" [value]="allSelectedGeneralSettingsOptions && allSelectedGeneralSettingsOptions.lastIndexOf(genOpt.name)>-1" tabindex="1">{{genOpt.getName()}}</mat-checkbox>
+ <mat-checkbox class="dialogCheckBox" *ngFor="let genOpt of data.mngsDOList" [attr.data-value]="genOpt.name"[checked]="genOpt.checked" [(ngModel)]="genOpt.checked" [value]="data.allSelectedGeneralSettingsOptions && data.allSelectedGeneralSettingsOptions.lastIndexOf(genOpt.name)>-1" tabindex="1">{{genOpt.getName()}}</mat-checkbox>
 
     </div>
 

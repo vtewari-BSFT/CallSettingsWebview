@@ -446,7 +446,7 @@ export class BroadworksMobilityComponent implements OnInit {
         this.allSelectedGeneralSettingsOptions.push(this.customizedTextJson.broadworks_mobility.use_mobility_calling_line_id);
       }
 
-      this.isCallAnchoringChecked = (this.broadworksMobilityMobileIdentitySettingsParsedJson.BroadWorksMobilityMobileIdentity.answerConfirmationRequired.$ === 'true');
+      this.isCallAnchoringChecked = (this.broadworksMobilityMobileIdentitySettingsParsedJson.BroadWorksMobilityMobileIdentity.mobileCallAnchoringPolicy.enableCallAnchoring.$ === 'true');
       this.broadWorksMobilityService.setIsCallAnchoringChecked(this.isCallAnchoringChecked);
       if (this.isCallAnchoringChecked) {
         this.allSelectedGeneralSettingsOptions.push(this.customizedTextJson.broadworks_mobility.call_anchoring);
@@ -1043,24 +1043,21 @@ export class BroadworksMobilityComponent implements OnInit {
     }
 
 
-      if (this.isDesktop) {
-        if (result.length === 0) {
-          this.geninputValue = this.customizedTextJson.none;
-        } else {
-          this.geninputValue = result.join();
-        }
+    if (this.isDesktop) {
+      if (result.length === 0) {
+        this.geninputValue = this.customizedTextJson.none;
+      } else {
+        this.geninputValue = result.join();
       }
+    }
 
     if (this.allSelectedGeneralSettingsOptions.length > 0) {
       this.alertingDialogResults = this.allSelectedGeneralSettingsOptions.toString();
     } else {
       this.alertingDialogResults = this.customizedTextJson.broadworks_mobility.no_settings_set;
     }
-
-      this.sendSelectedGeneralSettingsOptions();
-
+    this.sendSelectedGeneralSettingsOptions();
       this.previousSelectedGenSetting = this.allSelectedGeneralSettingsOptions;
-
   }
   private showGeneralSettingsDropdown() {
 
@@ -1086,7 +1083,13 @@ export class BroadworksMobilityComponent implements OnInit {
 
   postSelectedGeneralSettingsOptionsPut(error) {
 
- if (!error) {
+    if (error) {
+      if (error.status === 0) {
+        this.selectGenSettingsErrMsg = this.customizedTextJson.error.networkerror;
+      } else {
+        this.selectGenSettingsErrMsg = this.util.frameErrorMessage(this.customizedTextJson.error.updatefailed, error.status);
+      }
+    }
     this.isAlertAgentCallsChecked = this.broadWorksMobilityService.fetchIsAlertAgentCallsChecked();
     this.isAlertClickToDialCallsChecked = this.broadWorksMobilityService.fetchIsAlertClickToDialCallsChecked();
     this.isAlertGroupPagingCallsChecked = this.broadWorksMobilityService.fetchIsAlertGroupPagingCallsChecked();
@@ -1095,13 +1098,6 @@ export class BroadworksMobilityComponent implements OnInit {
     this.isAnswerConfirmationRequiredChecked = this.broadWorksMobilityService.fetchIsAnswerConfirmationRequiredChecked();
     this.isBroadworksCallControlChecked = this.broadWorksMobilityService.fetchIsBroadworksCallControlChecked();
     this.isCallAnchoringChecked = this.broadWorksMobilityService.fetchIsCallAnchoringChecked();
-    } else if (error) {
-      if (error.status === 0) {
-        this.selectGenSettingsErrMsg = this.customizedTextJson.error.networkerror;
-      } else {
-        this.selectGenSettingsErrMsg = this.util.frameErrorMessage(this.customizedTextJson.error.updatefailed, error.status);
-      }
-    }
   }
 
   /* ================================ */
