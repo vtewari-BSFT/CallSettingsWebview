@@ -15,6 +15,7 @@ export class Util {
     public emailRegx = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     public sipUriRegx = /^(sip:)?([a-zA-Z0-9\-\!\_\.\+\~\*\'\(\)]){1,}\@([A-Za-z0-9\-\.]){1,}\.([A-Za-z]{2,4})(:([0-9]){1,4})?$/;
     public baseUrl = window['xsiActionsBaseURL'];
+    public displayCriteriaOrScheduleName = window['displayCriteriaOrScheuleName'];
     customizedTextJson = window['customizedTexts'];
 
     public isDesktopPlatform() {

@@ -303,10 +303,10 @@ putSelectedGeneralSettingsOptions(broadWorksMobilityUrl, allSelectedGeneralSetti
         isCallAnchoringChecked = false;
     }
 
-    body += '<alertAgentCalls>' + isAlertAgentCallsChecked + '</alertAgentCalls><alertClickToDialCalls>' + isAlertClickToDialCallsChecked + '</alertClickToDialCalls><alertGroupPagingCalls>' + isAlertGroupPagingCallsChecked + '</alertGroupPagingCalls>' +
-        '<useMobilityCallingLineID>' + isUseMobilityCallingLineIDChecked + '</useMobilityCallingLineID><useDiversionInhibitor>' + isUseDiversionInhibitorChecked + '</useDiversionInhibitor>' +
-        '<answerConfirmationRequired>' + isAnswerConfirmationRequiredChecked + '</answerConfirmationRequired><broadworksCallControl>' + isBroadworksCallControlChecked + '</broadworksCallControl><mobileCallAnchoringPolicy><enableCallAnchoring>' + isCallAnchoringChecked + '</enableCallAnchoring></mobileCallAnchoringPolicy>' +
-        '</BroadWorksMobilityMobileIdentity>';
+      body += '<alertAgentCalls>' + isAlertAgentCallsChecked + '</alertAgentCalls><alertClickToDialCalls>' + isAlertClickToDialCallsChecked + '</alertClickToDialCalls><alertGroupPagingCalls>' + isAlertGroupPagingCallsChecked + '</alertGroupPagingCalls>' +
+      '<useMobilityCallingLineID>' + isUseMobilityCallingLineIDChecked + '</useMobilityCallingLineID><useDiversionInhibitor>' + isUseDiversionInhibitorChecked + '</useDiversionInhibitor>' +
+      '<answerConfirmationRequired>' + isAnswerConfirmationRequiredChecked + '</answerConfirmationRequired><broadworksCallControl>' + isBroadworksCallControlChecked + '</broadworksCallControl><mobileCallAnchoringPolicy><enableCallAnchoring>' + isCallAnchoringChecked + '</enableCallAnchoring></mobileCallAnchoringPolicy>' +
+      '</BroadWorksMobilityMobileIdentity>';
 
     this.httpServices.httpPutRequest(broadWorksMobilityUrl, body)
         .subscribe((res) => {

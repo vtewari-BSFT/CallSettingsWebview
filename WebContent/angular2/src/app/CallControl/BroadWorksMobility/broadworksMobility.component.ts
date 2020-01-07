@@ -1042,7 +1042,6 @@ export class BroadworksMobilityComponent implements OnInit {
       }
     }
 
-
     if (this.isDesktop) {
       if (result.length === 0) {
         this.geninputValue = this.customizedTextJson.none;
@@ -1050,13 +1049,13 @@ export class BroadworksMobilityComponent implements OnInit {
         this.geninputValue = result.join();
       }
     }
+    this.sendSelectedGeneralSettingsOptions();
 
     if (this.allSelectedGeneralSettingsOptions.length > 0) {
       this.alertingDialogResults = this.allSelectedGeneralSettingsOptions.toString();
     } else {
       this.alertingDialogResults = this.customizedTextJson.broadworks_mobility.no_settings_set;
     }
-    this.sendSelectedGeneralSettingsOptions();
       this.previousSelectedGenSetting = this.allSelectedGeneralSettingsOptions;
   }
   private showGeneralSettingsDropdown() {
@@ -1074,8 +1073,8 @@ export class BroadworksMobilityComponent implements OnInit {
 
   private sendSelectedGeneralSettingsOptions() {
 
-    this.selectGenSettingsErrMsg = '';
 
+    this.selectGenSettingsErrMsg = '';
     this.broadWorksMobilityService.putSelectedGeneralSettingsOptions(this.serviceRouteProvider.fetchBroadWorksMobilityUrl(), this.allSelectedGeneralSettingsOptions, this.postSelectedGeneralSettingsOptionsPut.bind(this));
 
 
@@ -1089,6 +1088,7 @@ export class BroadworksMobilityComponent implements OnInit {
       } else {
         this.selectGenSettingsErrMsg = this.util.frameErrorMessage(this.customizedTextJson.error.updatefailed, error.status);
       }
+
     }
     this.isAlertAgentCallsChecked = this.broadWorksMobilityService.fetchIsAlertAgentCallsChecked();
     this.isAlertClickToDialCallsChecked = this.broadWorksMobilityService.fetchIsAlertClickToDialCallsChecked();

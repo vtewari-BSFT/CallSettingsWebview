@@ -96,6 +96,18 @@ public class ApplicationUtil {
 		
 		return xsiContextPath;
 	}
+	public static String getDisplayCriteriaOrScheduleName(HttpServletRequest request) {
+		
+		String displayCriteriaOrScheduleName = "";
+			
+		displayCriteriaOrScheduleName = appContext.getResourceConfiguration()
+				.getConfiguration(AppConstants.SYSTEM_GENERAL_DISPLAYCRITERIAORSCHEDULENAME);
+		if(displayCriteriaOrScheduleName == "criteria" || displayCriteriaOrScheduleName == "schedule") {
+			displayCriteriaOrScheduleName = displayCriteriaOrScheduleName;
+		}
+		
+		return displayCriteriaOrScheduleName;
+	}
 	
 	public static String readJSONForAppTest() {
 		

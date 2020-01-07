@@ -14,6 +14,7 @@ public class AppConstants {
 	public static final String HTTP_CHANNEL = "Http";
 	
 	public static final String SYSTEM_GENERAL_XSI_ACTIONS_CONTEXT_URL = "system.general.xsiActionsContextOrURL";
+	public static final String SYSTEM_GENERAL_DISPLAYCRITERIAORSCHEDULENAME = "system.general.displayCriteriaOrScheduleName";
 	public static final String SYSTEM_BRANDING_CUSTOM_PATH = "system.branding.customPath";
 	
 	public static final String CUSTOM_STYLE_TEMPLATE_FILE = "customStyle.css.template";

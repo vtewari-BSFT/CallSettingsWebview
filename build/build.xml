@@ -116,6 +116,7 @@
 					String customizationTexts = &quot;&quot;; ${line.separator}
 					String userDomain = &quot;&quot;; ${line.separator}
 					String xsiContextPath = &quot;&quot;; ${line.separator}
+					String displayCriteriaOrScheduleName = &quot;&quot;; ${line.separator}
 				
 					${line.separator}${line.separator}
 					try { ${line.separator}
@@ -180,6 +181,13 @@
 					} catch (Exception ex) { ${line.separator}
 						ChannelLoggerUtil.getLogger().log(ChannelSeverity.WARN, &quot;cswindex.jsp &quot;, &quot;Exception occurred while getting XSI Path or URL.&quot; + ApplicationUtil.getStackTrace(ex) ); ${line.separator}
 					}	${line.separator}
+					${line.separator}${line.separator}
+					try { ${line.separator}
+						${line.separator}
+					displayCriteriaOrScheduleName = ApplicationUtil.getDisplayCriteriaOrScheduleName(request);${line.separator}
+					} catch (Exception ex) { ${line.separator}
+						ChannelLoggerUtil.getLogger().log(ChannelSeverity.WARN, &quot;cswindex.jsp &quot;, &quot;Exception occurred while setting criteria or schedule Name.&quot; + ApplicationUtil.getStackTrace(ex) ); ${line.separator}
+					}	${line.separator}
 					${line.separator}
 					%&gt; ${line.separator}
 				">
@@ -199,6 +207,11 @@
 			</replace>
 		
 			<replace token="@codexsiContextPathAssign@" value="&lt;%= xsiContextPath %&gt;">
+						
+				<fileset dir="${staging}" includes="cswindex.jsp" />
+			</replace>
+
+			<replace token="@codedisplayCriteriaOrScheduleName@" value="&lt;%= displayCriteriaOrScheduleName %&gt;">
 						
 				<fileset dir="${staging}" includes="cswindex.jsp" />
 			</replace>

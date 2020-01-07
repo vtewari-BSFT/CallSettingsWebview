@@ -20,7 +20,16 @@
       <string minLength="1" maxLength="255"></string>
     </format>
   </option>
-  
+  <option>
+    <name>system.general.displayCriteriaOrScheduleName</name>
+    <display>General.displayCriteriaOrScheduleName</display>
+    <help>This parameter can be set to display the sequential rings with respect to 
+    criteria name or schedule name. Default is criteria.
+    </help>
+    <format defaultValue="criteria">
+      <string minLength="1" maxLength="255"></string>
+    </format>
+  </option>
   <!-- Branding related configuration for the application -->
   <context>
     <display>Branding</display>

@@ -12,6 +12,7 @@ export class SequentialRingServiceInput {
   isCallerMayStopSearch = false;
   seqRingArray: SeqRingArray[];
   criteriaArray: CriteriaArray[];
+  scheduleArray: ScheduleArray[];
   constructor() {}
 
   setIsSequentialRingActive(value: boolean) {
@@ -70,22 +71,53 @@ export class SequentialRingServiceInput {
     }
   }
 
+    // Initially getting the values from the Server and setiing in the POJO...
+    setScheduleArrayInit(parsedJson) {
+      this.scheduleArray = new Array();
+      console.log('parsedJson.SequentialRingCriteria.timeSchedule.name.$', parsedJson.SequentialRingCriteria.criteria.timeSchedule.name.$);
+      if (parsedJson.SequentialRingCriteria && parsedJson.SequentialRingCriteria.criteria && parsedJson.SequentialRingCriteria.criteria.timeSchedule && parsedJson.SequentialRingCriteria.criteria.timeSchedule.name) {
+
+            this.scheduleArray.push(new ScheduleArray
+              (parsedJson.SequentialRingCriteria.criteria.timeSchedule.name.$,
+                parsedJson.SequentialRingCriteria.criteria.timeSchedule.level.$
+              ));
+
+        } else {
+          this.scheduleArray.push(new ScheduleArray
+            (parsedJson.SequentialRingCriteria.criteria.timeSchedule.name.$,
+              parsedJson.SequentialRingCriteria.criteria.timeSchedule.level.$));
+        }
+      }
+
   // Initially getting the values from the Server and setiing in the POJO...
-  setCriteriaArrayInit(parsedJson) {
+  setCriteriaArrayInit(parsedJson, serviceJson) {
+    console.log('inside the setCriteriaArrayInit function');
     this.criteriaArray = new Array();
-    if (parsedJson.SequentialRing.criteriaActivationList && parsedJson.SequentialRing.criteriaActivationList.criteriaActivation &&
+    if (serviceJson) {
+      for  (let index = 0; index < serviceJson.length; ++index) {
+        if (serviceJson[index].name.SequentialRingCriteria && serviceJson[index].name.SequentialRingCriteria.criteria && serviceJson[index].name.SequentialRingCriteria.criteria.timeSchedule) {
+            this.criteriaArray.push(new CriteriaArray
+              (parsedJson.SequentialRing.criteriaActivationList.criteriaActivation[index].criteriaName.$, serviceJson[index].name.SequentialRingCriteria.criteria.timeSchedule.name.$,
+                parsedJson.SequentialRing.criteriaActivationList.criteriaActivation[index].active.$ === 'true'));
+          } else {
+            this.criteriaArray.push(new CriteriaArray
+              (parsedJson.SequentialRing.criteriaActivationList.criteriaActivation[index].criteriaName.$, "Every Day All day",
+              parsedJson.SequentialRing.criteriaActivationList.criteriaActivation[index].active.$ === 'true'));
+          }
+        }
+      }  else if (parsedJson && parsedJson.SequentialRing.criteriaActivationList && parsedJson.SequentialRing.criteriaActivationList.criteriaActivation &&
       (parsedJson.SequentialRing.criteriaActivationList.criteriaActivation.length ||
         parsedJson.SequentialRing.criteriaActivationList.criteriaActivation.criteriaName)) {
       if (parsedJson.SequentialRing.criteriaActivationList.criteriaActivation.length) {
         let size = parsedJson.SequentialRing.criteriaActivationList.criteriaActivation.length;
         for (let index = 0; index < size; ++index) {
           this.criteriaArray.push(new CriteriaArray
-            (parsedJson.SequentialRing.criteriaActivationList.criteriaActivation[index].criteriaName.$,
+            (parsedJson.SequentialRing.criteriaActivationList.criteriaActivation[index].criteriaName.$, parsedJson.SequentialRing.criteriaActivationList.criteriaActivation[index].criteriaName.$,
             parsedJson.SequentialRing.criteriaActivationList.criteriaActivation[index].active.$ === 'true'));
         }
       } else {
         this.criteriaArray.push(new CriteriaArray
-          (parsedJson.SequentialRing.criteriaActivationList.criteriaActivation.criteriaName.$,
+          (parsedJson.SequentialRing.criteriaActivationList.criteriaActivation.criteriaName.$, parsedJson.SequentialRing.criteriaActivationList.criteriaActivation.criteriaName.$,
           parsedJson.SequentialRing.criteriaActivationList.criteriaActivation.active.$ === 'true'));
       }
     }
@@ -164,6 +196,50 @@ export class SeqRingArray {
 
 export class CriteriaArray {
   private name;
+  private scheduleName;
+  isActive;
+  updateInprogress = false;
+  errorMessage = '';
+  constructor(name: string, scheduleName: string,  isActive: boolean) {
+    this.name = name;
+    this.scheduleName = scheduleName;
+    this.isActive = isActive;
+  }
+  getName() {
+    return this.name;
+  }
+  getScheduleName() {
+    return this.scheduleName;
+  }
+  setName(name: string) {
+    this.name = name;
+  }
+  setScheduleName(scheduleName: string){
+    this.scheduleName = scheduleName;
+  }
+  getIsActive() {
+    return this.isActive;
+  }
+  setIsActive(isActive: boolean) {
+    this.isActive = isActive;
+  }
+  getErrorMsg() {
+    return this.errorMessage;
+  }
+  setErrorMsg(errorMessage) {
+    this.errorMessage = errorMessage;
+  }
+  setUpdateInprogress(flag: boolean) {
+    this.updateInprogress = flag;
+  }
+  isUpdateInprogress() {
+    return this.updateInprogress;
+  }
+}
+
+export class ScheduleArray {
+  private name;
+  private scheduleName;
   isActive;
   updateInprogress = false;
   errorMessage = '';
@@ -174,8 +250,14 @@ export class CriteriaArray {
   getName() {
     return this.name;
   }
+  getScheduleName() {
+    return this.scheduleName;
+  }
   setName(name: string) {
     this.name = name;
+  }
+  setScheduleName(scheduleName: string){
+    this.scheduleName = scheduleName;
   }
   getIsActive() {
     return this.isActive;

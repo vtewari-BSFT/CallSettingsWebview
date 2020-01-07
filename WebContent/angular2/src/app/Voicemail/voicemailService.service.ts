@@ -108,7 +108,6 @@ export class VoicemailService {
     }
 
     putSendCallsToVoicemailService(voicemailUrl, isSendCallAlwaysSelected, isSendCallBusySelected,  isSendCallNoAnswerSelected, postVoicemailPut) {
-
         this.constructInitialBody();
 
         this.voicemailBody = this.voicemailBody + '<alwaysRedirectToVoiceMail>' + isSendCallAlwaysSelected + '</alwaysRedirectToVoiceMail><busyRedirectToVoiceMail>' + isSendCallBusySelected + '</busyRedirectToVoiceMail><noAnswerRedirectToVoiceMail>' + isSendCallNoAnswerSelected + '</noAnswerRedirectToVoiceMail>';

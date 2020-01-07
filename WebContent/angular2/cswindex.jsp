@@ -9,6 +9,7 @@
 var callSettingsHeroInput = @codeFav2@;
 var userDomain = '@codeUserDomainAssign@'
 var xsiContextPath = '@codexsiContextPathAssign@'
+var displayCriteriaOrScheduleName = '@codedisplayCriteriaOrScheduleName@'
 
 console.log("Data read from the JSON : "+callSettingsHeroInput);
 </script>
@@ -36,7 +37,9 @@ var isTextsLoaded = false;
 
 
 xsiActionsBaseURL = xsiContextPath;
+displayCriteriaOrScheduleName = displayCriteriaOrScheduleName;
 console.log('Xsi-Actions baseURL : '+ xsiActionsBaseURL);
+console.log('displayCriteriaOrScheduleName Value : '+ displayCriteriaOrScheduleName);
 
 var customStyleUrl = '';
 customStyleUrl = customStyleUrl + 'userDomain=' + userDomain;
@@ -94,7 +97,8 @@ var customStyleUrlString = 'customStyle?' + encodeURIComponent(customStyleUrl);
 		if (!window['customizedTexts']) {
 			window['customizedTexts'] = localeCustomTexts;
 		}
-		window['xsiActionsBaseURL'] = xsiActionsBaseURL;
+    window['xsiActionsBaseURL'] = xsiActionsBaseURL;
+    window['displayCriteriaOrScheduleName'] = displayCriteriaOrScheduleName;
 
 		// Developer mode constants
 		window['devUserPwd'] = "Welcom3";

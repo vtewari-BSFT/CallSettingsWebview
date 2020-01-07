@@ -10,14 +10,26 @@ import {HttpServices} from 'app/AppCommon/httpservices.service';
 import {IncomingComponent} from 'app/IncomingCalls/incoming.component'
 import {SequentialRingServiceInput} from 'app/IncomingCalls/SequentialRing/sequentialRingServiceInput.service';
 import {CriteriaArray} from 'app/IncomingCalls/SequentialRing/sequentialRingServiceInput.service';
+import {ScheduleArray} from 'app/IncomingCalls/SequentialRing/sequentialRingServiceInput.service';
 
 
 @Injectable()
 export class SequentialRingService {
+  public displayCriteriaOrScheduleName = window['displayCriteriaOrScheduleName'];
+  // public displayCriteriaOrScheduleName = 'schedule';
+
   private res: Response;
   private headers: Headers = new Headers();
-  private sequentialRingParsedJson;
+  public sequentialRingParsedJson;
+  private serviceNameRingParsedJson;
+  private criteriaName;
+  private criteriaNameArr;
+  private result;
+  private serviceNameConfig;
   private criteriaArray: CriteriaArray[] = new Array();
+  private scheduleArray: ScheduleArray[] = new Array();
+  private scheduleNameArray = new Array();
+  private Url;
   private isModified = false;
   private deletePosition = 100;   // Initially pointing to no array elements...
   constructor(private httpservices: HttpServices, private http: Http, private sequentialRingServiceInput: SequentialRingServiceInput) {
@@ -39,9 +51,29 @@ export class SequentialRingService {
         this.sequentialRingServiceInput.setIsCallerMayStopSearch(this.sequentialRingParsedJson
         ['SequentialRing']['callerMayStopSearch']['$'] === 'true');
         this.sequentialRingServiceInput.setSeqRingArrayInit(this.sequentialRingParsedJson);
-        this.sequentialRingServiceInput.setCriteriaArrayInit(this.sequentialRingParsedJson);
+        this.sequentialRingServiceInput.setCriteriaArrayInit(this.sequentialRingParsedJson, null);
         this.sequentialRingServiceInput.setIsSequentialRingActive(this.fetchIsSequentialRingActive());
-        postSequentialRingGet(this.sequentialRingParsedJson);
+        console.log('This is displayCriteriaOrScheduleName Value : ', this.displayCriteriaOrScheduleName);
+        if (this.displayCriteriaOrScheduleName === 'schedule') {
+        this.criteriaNameArr = this.sequentialRingParsedJson ['SequentialRing']['criteriaActivationList']['criteriaActivation'];
+        for (let index = 0; index < this.criteriaArray.length; index++) {
+        this.criteriaName = this.criteriaArray[index];
+        this.Url = SequentialRingUrl + '/Criteria/' + this.criteriaName.name;
+        this.httpservices.httpGetRequest(this.Url)
+        .subscribe((result) => {
+          this.serviceNameRingParsedJson = result.json();
+          this.scheduleArray.push(new ScheduleArray (this.serviceNameRingParsedJson,
+            true));
+            this.sequentialRingServiceInput.setCriteriaArrayInit(this.sequentialRingParsedJson, this.scheduleArray);
+            postSequentialRingGet(this.sequentialRingParsedJson);
+        }, (err) => {
+          console.log('Error getting the values in Schedule name Ring.');
+          postSequentialRingGet(null);
+        });
+      }
+    } else {
+      postSequentialRingGet(this.sequentialRingParsedJson);
+    }
       },
       (err) => {
         console.log('Error getting the values in Sequential Ring.');

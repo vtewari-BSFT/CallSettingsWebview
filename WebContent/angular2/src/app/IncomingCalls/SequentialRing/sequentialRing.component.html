@@ -105,7 +105,7 @@
         <div *ngIf="criteria">
             <mat-list class="primaryContentText">
                 <mat-list-item class="simRingCriteriaAlign">
-                    <p mat-line class="secondLevelSettingLeftPadding primaryContentText restrictiveLabelStyle" [class.errorTextColor]="criteria.errorMessage" tabindex="0">{{criteria.getName()}}</p>
+                    <p mat-line class="secondLevelSettingLeftPadding primaryContentText restrictiveLabelStyle" [class.errorTextColor]="criteria.errorMessage" tabindex="0">{{criteria.getScheduleName()}}</p>
                     <mat-spinner [diameter]="20" [class.callsettingHide]="!criteria.isUpdateInprogress()"> </mat-spinner>
                     <mat-slide-toggle [checked]="criteria.getIsActive()" (change)="onCriteriaUpdate(criteria)" (keyup.enter)="onCriteriaUpdate(criteria)" tabindex="0">
                     </mat-slide-toggle>
