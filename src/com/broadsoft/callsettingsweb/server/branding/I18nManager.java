@@ -116,15 +116,101 @@ locale = AppConstants.LOCALE_KO_KOREAN;
 break;
 }
 
+case "it":
+case "it_CH": {
+locale = AppConstants.LOCALE_IT_ITALIAN;
+break;
+}
+
+case "en":
+case "en_AU":
+case "en_BZ":
+case "en_CA":
+case "en_IE":
+case "en_JM":
+case "en_NZ":
+case "en_ZA":
+case "en_TT":
+case "en_GB": {
+locale = AppConstants.LOCALE_US_ENGLISH;
+break;
+}
+
+case "es":
+case "es_AR":
+case "es_BO":
+case "es_CL":
+case "es_CO":
+case "es_CR":
+case "es_DO":
+case "es_EC":
+case "es_SV":
+case "es_GT":
+case "es_HN":
+case "es_MX":
+case "es_NI":
+case "es_PA":
+case "es_PY":
+case "es_PR":
+case "es_UY":
+case "es_VE":
+case "es_PE": {
+locale = AppConstants.LOCALE_ES_SPANISH;
+break;
+}
+
+case "fr":
+case "fr_BE":
+case "fr_LU":
+case "fr_BG":
+case "fr_MC":
+case "fr_CH": {
+locale = AppConstants.LOCALE_FR_FRENCH;
+break;
+}
+
+case "de":
+case "de_AT":
+case "de_LI":
+case "de_LU":
+case "de_CH": {
+locale = AppConstants.LOCALE_DE_GERMAN;
+break;
+}
+
+case "zh":
+case "zh_HK":
+case "zh_CN":
+case "zh_SG":
+case "zh_TW": {
+locale = AppConstants.LOCALE_ZH_CHINESE;
+break;
+}
+
+case "nl":
+case "nl_BE": {
+locale = AppConstants.LOCALE_NL_DUTCH;
+break;
+}
+
+case "pt":
+case "pt_PT":
+case "pt_BR": {
+locale = AppConstants.LOCALE_PT_PORTUGUSE;
+break;
+}
+
+case "sv":
+case "sv_FI":
+case "sv_SE": {
+locale = AppConstants.LOCALE_SV_SWEDISH;
+break;
+}
+
 default: {
 locale = locale;
 break;
 }
-}
-
-if (locale.contains("zh")) {
-locale = AppConstants.LOCALE_ZH_CHINESE;
-
 }
 
 if (ChannelLoggerUtil.isLogLevelActive(AppConstants.CALL_SETTINGS_WEB_CHANNEL, ChannelSeverity.DEV_DEBUG)) {

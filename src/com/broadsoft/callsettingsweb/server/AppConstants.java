@@ -77,4 +77,11 @@ public class AppConstants {
 	public static final String LOCALE_JA_JAPANESE = "ja_JA";
 	public static final String LOCALE_KO_KOREAN = "ko_KO";
 	public static final String LOCALE_ZH_CHINESE = "zh_CN";
+	public static final String LOCALE_ES_SPANISH = "es";
+	public static final String LOCALE_IT_ITALIAN = "it_IT";
+	public static final String LOCALE_DE_GERMAN = "de_DE";
+	public static final String LOCALE_FR_FRENCH = "fr_FR";
+	public static final String LOCALE_NL_DUTCH = "nl_NL";
+	public static final String LOCALE_PT_PORTUGUSE = "pt_PT";
+	public static final String LOCALE_SV_SWEDISH = "sv_SE";
 }
