@@ -670,7 +670,7 @@ opacity: 0 !important;
 
 .whenToRingErrorMessage{
 
-  padding-top:5px !important ;
+  padding-top:2px !important ;
 }
 
 .outOfOfficeInputUnderline > .mat-input-wrapper > .mat-input-underline {
@@ -753,6 +753,7 @@ mat-dialog-actions {
   margin: '0 auto';
   padding: 22px 0px 0px 0px;
   border-radius: 8px;
+  outline: none !important;
 }
 
 /* the Dialog contents containing the checkbox */
@@ -763,11 +764,13 @@ mat-dialog-actions {
   align-content: center;
   width: 20px;
   height: 10px;
-  margin: '0 auto',
+  margin: '0 auto';
+  outline: none !important;
 }
 
 .dialogCheckBox {
    margin-left: 10px;
+   outline: none !important;
 }
 
 .mat-checkbox
@@ -779,6 +782,7 @@ height: 40px;
 /* width: 40px; */
 z-index: 1;
 pointer-events: none;
+outline: none !important;
 }
 
 html {
