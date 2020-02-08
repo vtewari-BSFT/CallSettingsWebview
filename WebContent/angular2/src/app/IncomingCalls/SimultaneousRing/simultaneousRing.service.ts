@@ -12,7 +12,7 @@ import { SimultaneousRingServiceInput } from 'app/IncomingCalls/SimultaneousRing
 
 @Injectable()
 export class SimultaneousRingService {
-    private url = 'http://localhost:8081/BWWebProxy/proxy';
+    private url = 'http://127.0.0.1:8080/BWWebProxy/proxy';
     private res: Response;
     private headers: Headers = new Headers();
     private map: Map<Number, Boolean> = new Map<Number, Boolean>();

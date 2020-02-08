@@ -11,7 +11,7 @@ import 'rxjs/add/observable/throw';
 /*This class handles the communication between the application and the server (XSI)*/
 export class HttpServices {
 
-  proxyUrl = 'http://127.0.0.1:8081/BWWebProxy/proxy';
+  proxyUrl = 'http://127.0.0.1:8080/BWWebProxy/proxy';
   headers: Headers = new Headers();
 
   constructor(private http: Http) {}
@@ -19,6 +19,7 @@ export class HttpServices {
   /*Sends HTTP GET request to server */
   httpGetRequest(serviceUrl) {
 
+    console.log('GET ServiceUrl ' + serviceUrl);
     this.setHeaders(serviceUrl);
 
     if (window['applicationMode'] === 'dev') {
@@ -35,7 +36,7 @@ export class HttpServices {
 
     /*Sends HTTP PUT request to server */
   httpPutRequest(serviceUrl, body) {
-
+    console.log('PUT ServiceUrl ' + serviceUrl);
     this.setHeaders(serviceUrl);
     console.log('Body to be send: ', body);
     if (window['applicationMode'] === 'dev') {
@@ -54,6 +55,7 @@ export class HttpServices {
     /*Sends HTTP POST request to server */
   httpPostRequest(serviceUrl, body) {
 
+    console.log('POST ServiceUrl ' + serviceUrl);
     this.setHeaders(serviceUrl);
     console.log('Body to be send: ', body);
     if (window['applicationMode'] === 'dev') {
@@ -70,6 +72,7 @@ export class HttpServices {
 
   /*Sends HTTP DELETE request to server */
   httpDeleteRequest(serviceUrl, body) {
+    console.log('DELETE ServiceUrl ' + serviceUrl);
     this.setHeaders(serviceUrl);
     console.log('Body to be send: ', body);
     if (window['applicationMode'] === 'dev') {
@@ -117,6 +120,9 @@ export class HttpServices {
     if (window['applicationMode'] === 'dev') {
       this.headers.set('url', serviceUrl);
     }
+
+    console.log('Headers Keys: ' + this.headers.keys());
+    console.log('Headers Values: ' + this.headers.values());
   }
 
   /*This method is to be invoked only in the dev/QA mode*/

@@ -12,7 +12,7 @@ import { CallForwardingServiceInput } from 'app/IncomingCalls/CallForwarding/cal
 @Injectable()
 
 export class CallForwardingService {
-    private url = 'http://localhost:8081/BWWebProxy/proxy';
+    private url = 'http://127.0.0.1:8080/BWWebProxy/proxy';
     private res: Response;
     private headers: Headers = new Headers();
 
